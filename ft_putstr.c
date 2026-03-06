@@ -6,7 +6,7 @@
 /*   By: maherraz <maherraz@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 10:42:40 by maherraz          #+#    #+#             */
-/*   Updated: 2026/03/02 10:45:46 by maherraz         ###   ########.fr       */
+/*   Updated: 2026/03/05 22:08:50 by maherraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,12 @@
 
 int	ft_putstr(char *str)
 {
-	int	count;
-
-	count = 0;
 	if (!str)
-		str = "(null)";
-	while (*str)
 	{
-		count += ft_putchar(*str);
-		str++;
+		return (ft_putstr("(null)"));
 	}
-	return (count);
+	if (*str == '\0')
+		return (0);
+	ft_putchar(*str);
+	return (1 + ft_putstr(str + 1));
 }
