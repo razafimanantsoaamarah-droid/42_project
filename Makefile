@@ -2,7 +2,7 @@ NAME= libftprintf.a
 CC= cc
 FLAGS= -Wall -Werror -Wextra
 INCLUDE_DIR= ft_printf.h
-SRCS= ft_printf.c ft_putchar.c ft_putstr.c ft_putnbr.c ft_hexa.c
+SRCS= ft_printf.c ft_putchar.c ft_putstr.c ft_putnbr.c ft_print_hexa.c ft_print_pointer.c
 OBJS= $(SRCS:.c=.o)
 
 all: $(NAME)
@@ -21,8 +21,4 @@ fclean: clean
 
 re: fclean all
 
-test: $(NAME)
-	cc $(FLAGS) -o test_prog test_ft_printf.c $(NAME)
-	./test_prog
-
-.PHONY: all clean fclean re test
+.PHONY: all clean fclean re
