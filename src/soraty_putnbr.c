@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   soraty_putnbr.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maherraz <maherraz@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 10:23:41 by maherraz          #+#    #+#             */
-/*   Updated: 2026/03/05 07:44:20 by maherraz         ###   ########.fr       */
+/*   Updated: 2026/03/16 10:00:00 by maherraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "soraty.h"
 
-static int	ft_putnbr_base(unsigned long number)
+static int	putnbr_base(unsigned long number)
 {
 	int				count;
 	unsigned long	digit;
@@ -22,13 +22,13 @@ static int	ft_putnbr_base(unsigned long number)
 	if (number >= 0)
 	{
 		if (number >= 10)
-			count += ft_putnbr_base(number / 10);
-		count += ft_putchar((char)(digit % 10 + '0'));
+			count += putnbr_base(number / 10);
+		count += soraty_putchar((char)(digit % 10 + '0'));
 	}
 	return (count);
 }
 
-int	ft_putnbr(int nb)
+int	soraty_putnbr(int nb)
 {
 	int		count;
 	long	n;
@@ -36,19 +36,19 @@ int	ft_putnbr(int nb)
 	count = 0;
 	n = nb;
 	if (n == 0)
-		return (ft_putchar('0'));
+		return (soraty_putchar('0'));
 	if (n < 0)
 	{
-		count += ft_putchar('-');
+		count += soraty_putchar('-');
 		n = -n;
 	}
-	count += ft_putnbr_base((unsigned long)n);
+	count += putnbr_base((unsigned long)n);
 	return (count);
 }
 
-int	ft_putnbr_unsigned(unsigned int nb)
+int	soraty_putnbr_unsigned(unsigned int nb)
 {
 	if (nb == 0)
-		return (ft_putchar('0'));
-	return (ft_putnbr_base((unsigned long)nb));
+		return (soraty_putchar('0'));
+	return (putnbr_base((unsigned long)nb));
 }

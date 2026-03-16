@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_hexa.c                                    :+:      :+:    :+:   */
+/*   soraty_putchar.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maherraz <maherraz@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 10:23:30 by maherraz          #+#    #+#             */
-/*   Updated: 2026/03/05 07:22:11 by maherraz         ###   ########.fr       */
+/*   Updated: 2026/03/16 10:00:00 by maherraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "soraty.h"
 
-int	ft_print_hex(unsigned int n, int maj)
+int	soraty_putchar(char c)
 {
-	char	*base;
-	int		len;
-
-	len = 0;
-	if (maj)
-		base = "0123456789ABCDEF";
-	else
-		base = "0123456789abcdef";
-	if (n >= 16)
-		len += ft_print_hex(n / 16, maj);
-	len += ft_putchar(base[n % 16]);
-	return (len);
+	return (write(1, &c, 1));
 }
