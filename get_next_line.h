@@ -6,7 +6,7 @@
 /*   By: maherraz <maherraz@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/08 14:38:56 by maherraz          #+#    #+#             */
-/*   Updated: 2026/04/08 15:50:19 by maherraz         ###   ########.fr       */
+/*   Updated: 2026/04/08 17:02:30 by maherraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stddef.h>
-
-
 
 size_t	ft_strlen(const char *s);
 char	*ft_strchr(const char *s, int c);
