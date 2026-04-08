@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   soraty_putchar.c                                   :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maherraz <maherraz@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/02 10:23:30 by maherraz          #+#    #+#             */
-/*   Updated: 2026/03/16 10:00:00 by maherraz         ###   ########.fr       */
+/*   Created: 2026/03/02 10:42:40 by maherraz          #+#    #+#             */
+/*   Updated: 2026/03/02 10:45:46 by maherraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "soraty.h"
+#include "ft_printf.h"
 
-int	soraty_putchar(char c)
+int	ft_putstr(char *str)
 {
-	return (write(1, &c, 1));
+	if (!str)
+	{
+		return (ft_putstr("(null)"));
+	}
+	if (*str == '\0')
+		return (0);
+	ft_putchar(*str);
+	return (1 + ft_putstr(str + 1));
 }
