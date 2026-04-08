@@ -1,54 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   soraty_putnbr.c                                    :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maherraz <maherraz@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 10:23:41 by maherraz          #+#    #+#             */
-/*   Updated: 2026/03/16 10:00:00 by maherraz         ###   ########.fr       */
+/*   Updated: 2026/03/02 10:36:53 by maherraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "soraty.h"
+#include "ft_printf.h"
 
-static int	putnbr_base(unsigned long number)
+static int	ft_putnbr_base(long n)
 {
-	int				count;
-	unsigned long	digit;
+	int	count;
 
 	count = 0;
-	digit = number;
-	if (number >= 0)
-	{
-		if (number >= 10)
-			count += putnbr_base(number / 10);
-		count += soraty_putchar((char)(digit % 10 + '0'));
-	}
+	if (n >= 10)
+		count += ft_putnbr_base(n / 10);
+	count += ft_putchar((n % 10) + '0');
 	return (count);
 }
 
-int	soraty_putnbr(int nb)
+int	ft_putnbr(int nb)
 {
 	int		count;
 	long	n;
 
-	count = 0;
 	n = nb;
-	if (n == 0)
-		return (soraty_putchar('0'));
+	count = 0;
 	if (n < 0)
 	{
-		count += soraty_putchar('-');
+		count += ft_putchar('-');
 		n = -n;
 	}
-	count += putnbr_base((unsigned long)n);
-	return (count);
+	return (count + ft_putnbr_base(n));
 }
 
-int	soraty_putnbr_unsigned(unsigned int nb)
+int	ft_putnbr_unsigned(unsigned int nb)
 {
-	if (nb == 0)
-		return (soraty_putchar('0'));
-	return (putnbr_base((unsigned long)nb));
+	return (ft_putnbr_base((unsigned long)nb));
 }
