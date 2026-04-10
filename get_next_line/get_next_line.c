@@ -21,7 +21,7 @@ char	*fill_save(int fd, char *save)
 	if (!buffer)
 		return (NULL);
 	read_bytes = 1;
-	while (!ft_strchr(save, '\n') && read_bytes != 0)
+	while (!ft_strchr(save, DELIMITER) && read_bytes != 0)
 	{
 		read_bytes = read(fd, buffer, BUFFER_SIZE);
 		if (read_bytes == -1)
@@ -30,6 +30,8 @@ char	*fill_save(int fd, char *save)
 			free(save);
 			return (NULL);
 		}
+		if (read_bytes == 0)
+			break ;
 		buffer[read_bytes] = '\0';
 		save = ft_strjoin(save, buffer);
 	}
@@ -44,7 +46,7 @@ char	*get_clean_line(char *save)
 	i = 0;
 	if (!save[i])
 		return (NULL);
-	while (save[i] && save[i] != '\n')
+	while (save[i] && save[i] != DELIMITER)
 		i++;
 	return (ft_substr(save, 0, i + 1));
 }
@@ -55,7 +57,7 @@ char	*get_new_save(char *save)
 	char	*new_save;
 
 	i = 0;
-	while (save[i] && save[i] != '\n')
+	while (save[i] && save[i] != DELIMITER)
 		i++;
 	if (!save[i])
 	{
